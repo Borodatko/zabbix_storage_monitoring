@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.2</version>
+    <date>2023-03-31T15:58:23Z</date>
+    <groups>
+        <group>
+            <uuid>9612e39f7a834aa496295e49047c50cb</uuid>
+            <name>Templates/NetApp</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>bbddacccbb87443189cc1dd6faf0f910</uuid>
+            <template>Template App SANTricity</template>
+            <name>Template App SANTricity</name>
+            <groups>
+                <group>
+                    <name>Templates/NetApp</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>4838c7be1d054b39b28cda16ae38e17d</uuid>
+                    <name>Battery Status</name>
+                    <type>EXTERNAL</type>
+                    <key>santricity.sh[&quot;-b&quot;,&quot;{HOST.CONN}&quot;]</key>
+                    <delay>3h</delay>
+                    <history>365d</history>
+                    <trends>30d</trends>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Power Supply</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>ee6949d7f9154b50888d8421c40e5523</uuid>
+                            <expression>last(/Template App SANTricity/santricity.sh[&quot;-b&quot;,&quot;{HOST.CONN}&quot;])=1</expression>
+                            <name>Battery Failure on {HOST.CONN}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>81daefba53f74154abd5148b5861903e</uuid>
+                    <name>Drive Health Status</name>
+                    <type>EXTERNAL</type>
+                    <key>santricity.sh[&quot;-d&quot;,&quot;{HOST.CONN}&quot;]</key>
+                    <delay>2h</delay>
+                    <history>365d</history>
+                    <trends>30d</trends>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Drives</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>3ba8b94c1ac347d9837d52b88468a2ae</uuid>
+                            <expression>last(/Template App SANTricity/santricity.sh[&quot;-d&quot;,&quot;{HOST.CONN}&quot;])=1</expression>
+                            <name>Drive Failure on {HOST.CONN}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>fbfc9c9d44b449358756447f7aaef461</uuid>
+                    <name>FAN Status</name>
+                    <type>EXTERNAL</type>
+                    <key>santricity.sh[&quot;-f&quot;,&quot;{HOST.CONN}&quot;]</key>
+                    <delay>5h</delay>
+                    <history>365d</history>
+                    <trends>30d</trends>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>FAN</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>3e97993a33c2464da1df02ade76c0c43</uuid>
+                            <expression>last(/Template App SANTricity/santricity.sh[&quot;-f&quot;,&quot;{HOST.CONN}&quot;])=1</expression>
+                            <name>FAN Failure on {HOST.CONN}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>78e8e065bfa14ee19ca8a36b4325f0a0</uuid>
+                    <name>Power Supply Status</name>
+                    <type>EXTERNAL</type>
+                    <key>santricity.sh[&quot;-p&quot;,&quot;{HOST.CONN}&quot;]</key>
+                    <delay>4h</delay>
+                    <history>365d</history>
+                    <trends>30d</trends>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Power Supply</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>6be2aad6bd7342c9ad3e9a847beca474</uuid>
+                            <expression>last(/Template App SANTricity/santricity.sh[&quot;-p&quot;,&quot;{HOST.CONN}&quot;])=1</expression>
+                            <name>Power Supply Failure on {HOST.CONN}</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
